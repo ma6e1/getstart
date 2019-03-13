@@ -20,6 +20,9 @@ GST_DEBUG_CATEGORY_STATIC (debug_category);
   GMainLoop *main_loop;  /* GLib main loop */
   gboolean initialized;  /* To avoid informing the UI multiple times about the initialization */
   UIView *ui_video_view; /* UIView that holds the video */
+  GstState state;
+  GstState target_state;
+  gboolean is_live;
 }
 
 /*
@@ -33,8 +36,7 @@ GST_DEBUG_CATEGORY_STATIC (debug_category);
     self->ui_delegate = uiDelegate;
     self->ui_video_view = video_view;
     
-    gst_init(NULL, NULL);
-//    GST_DEBUG_CATEGORY_INIT (debug_category, "getstart", 0, "iOS getstart");
+    GST_DEBUG_CATEGORY_INIT (debug_category, "getstart", 0, "iOS getstart");
     gst_debug_set_threshold_for_name("getstart", GST_LEVEL_DEBUG);
     
     /* Start the bus monitoring task */
@@ -46,28 +48,47 @@ GST_DEBUG_CATEGORY_STATIC (debug_category);
   return self;
 }
 
--(void) dealloc
+-(void) deinit
 {
-  if (pipeline) {
-    GST_DEBUG("Setting the pipeline to NULL");
-    gst_element_set_state(pipeline, GST_STATE_NULL);
-    gst_object_unref(pipeline);
-    pipeline = NULL;
+  if (main_loop)
+  {
+    g_main_loop_quit(main_loop);
   }
 }
 
+//-(void) dealloc
+//{
+//  if (pipeline) {
+//    GST_DEBUG("Setting the pipeline to NULL");
+//    gst_element_set_state(pipeline, GST_STATE_NULL);
+//    gst_object_unref(pipeline);
+//    pipeline = NULL;
+//  }
+//}
+
 -(void) play
 {
-  if(gst_element_set_state(pipeline, GST_STATE_PLAYING) == GST_STATE_CHANGE_FAILURE) {
-    [self setUIMessage:"Failed to set pipeline to playing"];
-  }
+  target_state = GST_STATE_CHANGE_PLAYING_TO_PLAYING;
+  is_live = (gst_element_set_state(pipeline, GST_STATE_PLAYING) == GST_STATE_CHANGE_NO_PREROLL);
+//  if(gst_element_set_state(pipeline, GST_STATE_PLAYING) == GST_STATE_CHANGE_FAILURE) {
+//    [self setUIMessage:"Failed to set pipeline to playing"];
+//  }
 }
 
 -(void) pause
 {
-  if(gst_element_set_state(pipeline, GST_STATE_PAUSED) == GST_STATE_CHANGE_FAILURE) {
-    [self setUIMessage:"Failed to set pipeline to paused"];
-  }
+  target_state = GST_STATE_PAUSED;
+  is_live = (gst_element_set_state(pipeline, GST_STATE_PAUSED) == GST_STATE_CHANGE_NO_PREROLL);
+//  if(gst_element_set_state(pipeline, GST_STATE_PAUSED) == GST_STATE_CHANGE_FAILURE) {
+//    [self setUIMessage:"Failed to set pipeline to paused"];
+//  }
+}
+
+-(void) setUri:(NSString*)uri
+{
+  const char *char_uri = [uri UTF8String];
+  g_object_set(pipeline, "uri", char_uri, NULL);
+  GST_DEBUG ("URI set to %s", char_uri);
 }
 
 /*
@@ -100,6 +121,27 @@ static void error_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *self)
   gst_element_set_state (self->pipeline, GST_STATE_NULL);
 }
 
+/* Called when buffering messages are received. We inform the UI about the current buffering level and
+ * keep the pipeline paused until 100% buffering is reached. At that point, set the desired state. */
+static void buffering_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *self) {
+  gint percent;
+  
+  if (self->is_live)
+    return;
+  
+  gst_message_parse_buffering (msg, &percent);
+  if (percent < 100 && self->target_state >= GST_STATE_PAUSED) {
+    gchar * message_string = g_strdup_printf ("Buffering %d%%", percent);
+    gst_element_set_state (self->pipeline, GST_STATE_PAUSED);
+    [self setUIMessage:message_string];
+    g_free (message_string);
+  } else if (self->target_state >= GST_STATE_PLAYING) {
+    gst_element_set_state (self->pipeline, GST_STATE_PLAYING);
+  } else if (self->target_state >= GST_STATE_PAUSED) {
+    [self setUIMessage:"Buffering complete"];
+  }
+}
+
 /* Notify UI about pipeline state changes */
 static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *self)
 {
@@ -107,6 +149,7 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   gst_message_parse_state_changed (msg, &old_state, &new_state, &pending_state);
   /* Only pay attention to messages coming from the pipeline, not its children */
   if (GST_MESSAGE_SRC (msg) == GST_OBJECT (self->pipeline)) {
+    self->state = new_state;
     gchar *message = g_strdup_printf("State changed to %s", gst_element_state_get_name(new_state));
     [self setUIMessage:message];
     g_free (message);
@@ -141,7 +184,8 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   g_main_context_push_thread_default(context);
   
   /* Build pipeline */
-  pipeline = gst_parse_launch("videotestsrc ! warptv ! videoconvert ! autovideosink", &error);
+  pipeline = gst_parse_launch("playbin uri=http://mirrors.standaloneinstaller.com/video-sample/jellyfish-25-mbps-hd-hevc.mp4", &error);
+//  pipeline = gst_parse_launch("videotestsrc ! warptv ! videoconvert ! autovideosink", &error);
   if (error) {
     gchar *message = g_strdup_printf("Unable to build pipeline: %s", error->message);
     g_clear_error (&error);
@@ -168,6 +212,7 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   g_source_unref (bus_source);
   g_signal_connect (G_OBJECT (bus), "message::error", (GCallback)error_cb, (__bridge void *)self);
   g_signal_connect (G_OBJECT (bus), "message::state-changed", (GCallback)state_changed_cb, (__bridge void *)self);
+  g_signal_connect (G_OBJECT (bus), "message::buffering", (GCallback)buffering_cb, (__bridge void *)self);
   gst_object_unref (bus);
   
   /* Create a GLib Main Loop and set it to run */
@@ -184,6 +229,10 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   g_main_context_unref (context);
   gst_element_set_state (pipeline, GST_STATE_NULL);
   gst_object_unref (pipeline);
+  pipeline = NULL;
+  
+  ui_delegate = NULL;
+  ui_video_view = NULL;
   
   return;
 }

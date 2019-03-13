@@ -11,6 +11,8 @@
   IBOutlet NSLayoutConstraint *video_height_constraint;
 }
 
+@property (retain,nonatomic) NSString *uri;
+
 -(IBAction) play:(id)sender;
 -(IBAction) pause:(id)sender;
 

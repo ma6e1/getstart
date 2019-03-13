@@ -9,10 +9,13 @@
  * Pass also the UIView object that will hold the video window. */
 -(id) init:(id) uiDelegate videoView:(UIView*) video_view;
 
+-(void) deinit;
+
 /* Set the pipeline to PLAYING */
 -(void) play;
 
 /* Set the pipeline to PAUSED */
 -(void) pause;
 
+-(void) setUri: (NSString*)uri;
 @end
