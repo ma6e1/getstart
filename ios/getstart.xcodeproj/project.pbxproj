@@ -37,7 +37,17 @@
 		2DCD954D1E0B4F2C00145EB5 /* getstartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* getstartTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		8F2FF7342236FB740089CE60 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FF7332236FB740089CE60 /* MyClass.m */; };
+		8F1B57C622385A9B006BB69A /* GSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F1B57C522385A9B006BB69A /* GSViewController.xib */; };
+		8F2FF79522370F300089CE60 /* GStreamer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2FF79422370F300089CE60 /* GStreamer.framework */; };
+		8F2FF797223710750089CE60 /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2FF796223710750089CE60 /* libiconv.2.tbd */; };
+		8F2FF79F2237F7F90089CE60 /* GStreamerBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FF79E2237F7F90089CE60 /* GStreamerBackend.m */; };
+		8F2FF7A22237F8570089CE60 /* GSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FF7A12237F8570089CE60 /* GSViewController.m */; };
+		8F2FF7A62237F8FB0089CE60 /* gst_ios_init.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FF7A52237F8FB0089CE60 /* gst_ios_init.m */; };
+		8F2FF7A92237FC950089CE60 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2FF7A82237FC950089CE60 /* VideoToolbox.framework */; };
+		8F2FF7F1223832980089CE60 /* GSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FF7F0223832980089CE60 /* GSManager.m */; };
+		8F2FF82522383E660089CE60 /* EaglUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FF82422383E660089CE60 /* EaglUIView.m */; };
+		8F2FF82822383FF30089CE60 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F2FF82622383FF30089CE60 /* Ubuntu-R.ttf */; };
+		8F2FF82922383FF30089CE60 /* fonts.conf in Resources */ = {isa = PBXBuildFile; fileRef = 8F2FF82722383FF30089CE60 /* fonts.conf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
@@ -335,7 +345,7 @@
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = getstart/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = getstart/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = getstart/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = getstart/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = getstart/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
@@ -345,8 +355,23 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		8F2FF7322236FB740089CE60 /* MyClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
-		8F2FF7332236FB740089CE60 /* MyClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		8F1B57C522385A9B006BB69A /* GSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSViewController.xib; sourceTree = "<group>"; };
+		8F2FF79422370F300089CE60 /* GStreamer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GStreamer.framework; path = ../../../Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework; sourceTree = "<group>"; };
+		8F2FF796223710750089CE60 /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		8F2FF79D2237F7F90089CE60 /* GStreamerBackend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackend.h; sourceTree = "<group>"; };
+		8F2FF79E2237F7F90089CE60 /* GStreamerBackend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GStreamerBackend.m; sourceTree = "<group>"; };
+		8F2FF7A02237F8570089CE60 /* GSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSViewController.h; sourceTree = "<group>"; };
+		8F2FF7A12237F8570089CE60 /* GSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSViewController.m; sourceTree = "<group>"; };
+		8F2FF7A42237F8FB0089CE60 /* gst_ios_init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gst_ios_init.h; sourceTree = "<group>"; };
+		8F2FF7A52237F8FB0089CE60 /* gst_ios_init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gst_ios_init.m; sourceTree = "<group>"; };
+		8F2FF7A72237F9250089CE60 /* GStreamerBackendDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendDelegate.h; sourceTree = "<group>"; };
+		8F2FF7A82237FC950089CE60 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		8F2FF7EF223832980089CE60 /* GSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSManager.h; sourceTree = "<group>"; };
+		8F2FF7F0223832980089CE60 /* GSManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSManager.m; sourceTree = "<group>"; };
+		8F2FF82322383E660089CE60 /* EaglUIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaglUIView.h; sourceTree = "<group>"; };
+		8F2FF82422383E660089CE60 /* EaglUIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaglUIView.m; sourceTree = "<group>"; };
+		8F2FF82622383FF30089CE60 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-R.ttf"; path = "../../../../Downloads/gst-docs-master/examples/tutorials/xcode iOS/Tutorial 3/Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		8F2FF82722383FF30089CE60 /* fonts.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fonts.conf; path = "../../../../Downloads/gst-docs-master/examples/tutorials/xcode iOS/Tutorial 3/fonts.conf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -365,7 +390,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F2FF7A92237FC950089CE60 /* VideoToolbox.framework in Frameworks */,
+				8F2FF797223710750089CE60 /* libiconv.2.tbd in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
+				8F2FF79522370F300089CE60 /* GStreamer.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -493,12 +521,20 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				8F1B57C522385A9B006BB69A /* GSViewController.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				8F2FF7322236FB740089CE60 /* MyClass.h */,
-				8F2FF7332236FB740089CE60 /* MyClass.m */,
+				8F2FF79D2237F7F90089CE60 /* GStreamerBackend.h */,
+				8F2FF79E2237F7F90089CE60 /* GStreamerBackend.m */,
+				8F2FF7A02237F8570089CE60 /* GSViewController.h */,
+				8F2FF7A12237F8570089CE60 /* GSViewController.m */,
+				8F2FF7EF223832980089CE60 /* GSManager.h */,
+				8F2FF7F0223832980089CE60 /* GSManager.m */,
+				8F2FF82322383E660089CE60 /* EaglUIView.h */,
+				8F2FF82422383E660089CE60 /* EaglUIView.m */,
+				8F2FF7A32237F8D20089CE60 /* Supporting Files */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
 			);
 			name = getstart;
 			sourceTree = "<group>";
@@ -529,6 +565,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F2FF7A82237FC950089CE60 /* VideoToolbox.framework */,
+				8F2FF796223710750089CE60 /* libiconv.2.tbd */,
+				8F2FF79422370F300089CE60 /* GStreamer.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -605,6 +644,18 @@
 				2D02E4901E0B4A5D006451C7 /* getstart-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8F2FF7A32237F8D20089CE60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F2FF7A42237F8FB0089CE60 /* gst_ios_init.h */,
+				8F2FF7A52237F8FB0089CE60 /* gst_ios_init.m */,
+				8F2FF7A72237F9250089CE60 /* GStreamerBackendDelegate.h */,
+				8F2FF82722383FF30089CE60 /* fonts.conf */,
+				8F2FF82622383FF30089CE60 /* Ubuntu-R.ttf */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -697,7 +748,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1060,8 +1111,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F1B57C622385A9B006BB69A /* GSViewController.xib in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8F2FF82822383FF30089CE60 /* Ubuntu-R.ttf in Resources */,
+				8F2FF82922383FF30089CE60 /* fonts.conf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,7 +1180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2FF7342236FB740089CE60 /* MyClass.m in Sources */,
+				8F2FF7A22237F8570089CE60 /* GSViewController.m in Sources */,
+				8F2FF7F1223832980089CE60 /* GSManager.m in Sources */,
+				8F2FF82522383E660089CE60 /* EaglUIView.m in Sources */,
+				8F2FF7A62237F8FB0089CE60 /* gst_ios_init.m in Sources */,
+				8F2FF79F2237F7F90089CE60 /* GStreamerBackend.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -1185,9 +1243,17 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = getstartTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1203,9 +1269,17 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = getstartTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1222,7 +1296,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"$(HOME)/Library/Developer/GStreamer/iPhone.sdk\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(HOME)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers\"",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = getstart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1240,7 +1320,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "\"$(HOME)/Library/Developer/GStreamer/iPhone.sdk\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(HOME)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers\"",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = getstart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1265,8 +1351,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = "getstart-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1291,8 +1385,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = "getstart-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1316,8 +1418,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = "getstart-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1341,8 +1451,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-gstreamer/common/**",
+				);
 				INFOPLIST_FILE = "getstart-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1404,6 +1522,32 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lresolv",
+					"-lstdc++",
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					Foundation,
+					"-framework",
+					AVFoundation,
+					"-framework",
+					CoreMedia,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					OpenGLES,
+					"-framework",
+					AssetsLibrary,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					AssetsLibrary,
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1449,6 +1593,32 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-lresolv",
+					"-lstdc++",
+					"-framework",
+					CoreFoundation,
+					"-framework",
+					Foundation,
+					"-framework",
+					AVFoundation,
+					"-framework",
+					CoreMedia,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					OpenGLES,
+					"-framework",
+					AssetsLibrary,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					AssetsLibrary,
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
