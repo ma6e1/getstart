@@ -184,7 +184,7 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   g_main_context_push_thread_default(context);
   
   /* Build pipeline */
-  pipeline = gst_parse_launch("playbin uri=http://mirrors.standaloneinstaller.com/video-sample/jellyfish-25-mbps-hd-hevc.mp4", &error);
+  pipeline = gst_parse_launch("playbin uri=http://demo.nimius.net/video_test/videos/test.mp4", &error);
 //  pipeline = gst_parse_launch("videotestsrc ! warptv ! videoconvert ! autovideosink", &error);
   if (error) {
     gchar *message = g_strdup_printf("Unable to build pipeline: %s", error->message);
