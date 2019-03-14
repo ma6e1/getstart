@@ -184,7 +184,7 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   g_main_context_push_thread_default(context);
   
   /* Build pipeline */
-  pipeline = gst_parse_launch("playbin uri=http://demo.nimius.net/video_test/videos/test.mp4", &error);
+  pipeline = gst_parse_launch("udpsrc port=5000 ! application/x-rtp,encoding-name=H264,payload=96 ! rtph264depay ! h264parse ! queue ! avdec_h264 ! videoconvert ! autovideosink sync=false async=false", &error);
 //  pipeline = gst_parse_launch("videotestsrc ! warptv ! videoconvert ! autovideosink", &error);
   if (error) {
     gchar *message = g_strdup_printf("Unable to build pipeline: %s", error->message);
@@ -195,7 +195,7 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, GStreamerBackend *se
   }
   
   /* Set the pipeline to READY, so it can already accept a window handle */
-  gst_element_set_state(pipeline, GST_STATE_READY);
+  gst_element_set_state(pipeline, GST_STATE_PLAYING);
   
   video_sink = gst_bin_get_by_interface(GST_BIN(pipeline), GST_TYPE_VIDEO_OVERLAY);
   if (!video_sink) {
